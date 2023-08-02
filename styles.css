@@ -1,0 +1,72 @@
+/* Réinitialiser les marges et les paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Style général du calendrier */
+.calendar {
+    max-width: 600px;
+    margin: 20px auto;
+    border: 1px solid #ccc;
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+    position: relative;
+    text-align: center;
+}
+
+/* En-tête du calendrier */
+.calendar__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #f0f0f0;
+}
+
+.calendar__month-year {
+    font-size: 18px;
+}
+
+/* Boutons de navigation du calendrier */
+.calendar__nav-button {
+    cursor: pointer;
+    font-size: 18px;
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 4px;
+    padding: 5px 10px;
+    transition: background-color 0.3s ease;
+}
+
+/* Style de la table */
+.calendar__table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Style des cellules de la table */
+.calendar__weekday, .calendar__day-cell {
+    text-align: center;
+    padding: 8px;
+}
+
+/* Style des jours du calendrier */
+.calendar__day-cell {
+    border: 1px solid #ccc;
+    position: relative;
+}
+
+/* Style des jours du mois actuel */
+.calendar__day-cell.current-month-day {
+    background-color: #007bff;
+    color: #fff;
+    font-weight: bold;
+}
+
+/* Style pour les en-têtes de jour */
+.calendar__weekday {
+    background-color: #f0f0f0;
+}
