@@ -1,6 +1,10 @@
 // Sélection des éléments du DOM
 const calendarBody = document.getElementById("calendarBody");
 const monthYearElement = document.getElementById("monthYear");
+const prevBtn = document.querySelector(".calendar__nav-button--prev");
+const nextBtn = document.querySelector(".calendar__nav-button--next");
+const prevYearBtn = document.querySelector(".year-change__button--prev");
+const nextYearBtn = document.querySelector(".year-change__button--next");
 
 // Variables globales pour le calendrier
 let currentDate = new Date();
@@ -54,6 +58,40 @@ function generateCalendar() {
 
     displayDays();
 }
+
+// Passe au mois précédent
+function previousMonth() {
+    currentDate.setMonth(currentDate.getMonth() - 1);
+    selectedDate = null;
+    generateCalendar();
+}
+
+// Passe au mois suivant
+function nextMonth() {
+    currentDate.setMonth(currentDate.getMonth() + 1);
+    selectedDate = null;
+    generateCalendar();
+}
+
+// Passe à l'année précédente
+function prevYear() {
+    currentDate.setFullYear(currentDate.getFullYear() - 1);
+    selectedDate = null;
+    generateCalendar();
+}
+
+// Passe à l'année suivante
+function nextYear() {
+    currentDate.setFullYear(currentDate.getFullYear() + 1);
+    selectedDate = null;
+    generateCalendar();
+}
+
+// Ajoute les gestionnaires d'événements aux boutons et éléments interactifs
+prevBtn.addEventListener("click", previousMonth);
+nextBtn.addEventListener("click", nextMonth);
+prevYearBtn.addEventListener("click", prevYear);
+nextYearBtn.addEventListener("click", nextYear);
 
 // Génère le calendrier initial
 generateCalendar();
