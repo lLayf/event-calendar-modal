@@ -41,6 +41,10 @@
     transition: background-color 0.3s ease;
 }
 
+.calendar__nav-button:hover {
+    background-color: #0056b3;
+}
+
 /* Style de la table */
 .calendar__table {
     width: 100%;
@@ -66,9 +70,100 @@
     font-weight: bold;
 }
 
+/* Style des jours désactivés (hors du mois actuel) */
+.calendar__day-cell.disabled {
+    color: #ccc;
+}
+
+/* Style pour mettre en évidence le jour sélectionné */
+.calendar__day-cell.selected-day {
+    background-color: #ffc107;
+}
+
 /* Style pour les en-têtes de jour */
 .calendar__weekday {
     background-color: #f0f0f0;
+}
+
+/* Style de la modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+}
+
+/* Style pour le bouton "Fermer" de la modal */
+.modal__close {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    cursor: pointer;
+}
+
+/* Style du formulaire d'ajout d'événement */
+.modal__title {
+    margin-bottom: 10px;
+}
+
+.modal__label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.modal__input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+}
+
+.modal__button {
+    padding: 8px 15px;
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.modal__button:hover {
+    background-color: #0056b3;
+}
+
+/* Style pour les événements ajoutés */
+.events-container {
+    max-width: 600px;
+    margin: 20px auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.event {
+    margin: 5px;
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 4px;
+}
+
+/* Style pour les événements ajoutés dans le mois précédent */
+.prev-month .event,
+.next-month .event {
+    background-color: #999;
 }
 
 /* Bouton pour changer d'année */
@@ -90,4 +185,18 @@
     cursor: pointer;
     font-size: 16px;
     margin: 0 5px;
+}
+
+/* Positionnement du bouton d'ajout d'événement */
+#openModalBtn {
+    margin-top: 10px;
+    display: block;
+    margin: 0 auto;
+    padding: 8px 15px;
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
 }

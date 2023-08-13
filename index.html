@@ -36,6 +36,27 @@
         <button class="year-change__button year-change__button--next">&gt;&gt;</button>
     </div>
 
+    <!-- Bouton d'ajout d'événement -->
+    <div class="add-event-container">
+        <button class="add-event-button" id="openModalBtn">Ajouter un Événement</button>
+    </div>
+
+    <!-- Container pour afficher les événements de la date sélectionnée -->
+    <div class="events-container" id="eventsContainer"></div>
+
+    <!-- Modal pour ajouter un événement -->
+    <div class="modal" id="eventModal">
+        <div class="modal-content">
+            <span class="modal__close">&times;</span>
+            <h2 class="modal__title">Ajouter un Événement</h2>
+            <label for="eventDate" class="modal__label">Date :</label>
+            <input type="date" id="eventDate" class="modal__input">
+            <label for="eventName" class="modal__label">Événement :</label>
+            <input type="text" id="eventName" class="modal__input">
+            <button class="modal__button" id="addEventBtn">Ajouter</button>
+        </div>
+    </div>
+
     <script src="calendar.js"></script>
 </body>
 </html>
