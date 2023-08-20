@@ -38,6 +38,21 @@ function displayDays() {
                 cell.textContent = dayNumber;
                 cell.classList.add("calendar__day-cell", "current-month-day");
 
+                // Compteur pour afficher le nombre d'événements pour cette date
+                const eventCounter = document.createElement("div");
+                eventCounter.classList.add("event-counter");
+
+                const dateValue = new Date(year, month, dayNumber).toISOString().split("T")[0];
+                const eventCount = events[dateValue]?.length || 0;
+                eventCounter.textContent = eventCount > 0 ? `(${eventCount})` : "";
+
+                cell.appendChild(eventCounter);
+
+                // Mettre en évidence le jour actuel
+                if (year === new Date().getFullYear() && month === new Date().getMonth() && dayNumber === new Date().getDate()) {
+                    cell.classList.add("current-day");
+                }
+
                 // Mettre en évidence le jour sélectionné
                 if (selectedDate && selectedDate.getDate() === dayNumber && selectedDate.getMonth() === month && selectedDate.getFullYear() === year) {
                     cell.classList.add("selected-day");
@@ -107,6 +122,9 @@ function addEvent() {
 
     // Fermer la modal après avoir ajouté l'événement
     eventModal.style.display = "none";
+
+    // Mettre à jour les compteurs d'événements dans le calendrier
+    updateEventCounters();
 }
 
 // Ouvre la modal pour ajouter un événement
@@ -167,6 +185,20 @@ function handleDateClick(event) {
         // Afficher les événements existants pour cette date
         displayEventsForSelectedDate();
     }
+}
+
+// Met à jour les compteurs d'événements dans le calendrier
+function updateEventCounters() {
+    const allCells = document.querySelectorAll(".current-month-day");
+    allCells.forEach((cell) => {
+        const year = currentDate.getFullYear();
+        const month = currentDate.getMonth();
+        const day = parseInt(cell.textContent);
+        const dateValue = new Date(year, month, day).toISOString().split("T")[0];
+        const eventCount = events[dateValue]?.length || 0;
+        const eventCounter = cell.querySelector(".event-counter");
+        eventCounter.textContent = eventCount > 0 ? `(${eventCount})` : "";
+    });
 }
 
 // Passe au mois précédent
