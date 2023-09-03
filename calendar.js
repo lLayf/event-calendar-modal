@@ -18,6 +18,32 @@ let currentDate = new Date();
 let selectedDate = null;
 let events = {};
 
+// ==================
+// Système Pub/Sub
+// ==================
+const pubSub = {
+    events: {},
+
+    subscribe: function(eventName, fn) {
+        this.events[eventName] = this.events[eventName] || [];
+        this.events[eventName].push(fn);
+    },
+
+    publish: function(eventName, data) {
+        if (this.events[eventName]) {
+            this.events[eventName].forEach(function(fn) {
+                fn(data);
+            });
+        }
+    }
+};
+
+// Pour ajouter du code supplémentaire qui devrait être exécuté
+// chaque fois qu'un événement est ajouté.
+pubSub.subscribe('eventAdded', function(eventName) {
+    console.log(`Un nouvel événement "${eventName}" a été ajouté !`);
+});
+
 // Affiche les jours du mois dans le calendrier
 function displayDays() {
     const year = currentDate.getFullYear();
@@ -113,6 +139,9 @@ function addEvent() {
 
     // Ajouter l'événement à la liste des événements pour cette date
     events[selectedDate.toISOString().split("T")[0]].push(eventName);
+
+    // Notifier les abonnés de l'ajout d'un nouvel événement
+    pubSub.publish('eventAdded', eventName);
 
     displayEventsForSelectedDate();
 
