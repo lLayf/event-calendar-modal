@@ -58,9 +58,9 @@ function displayDays() {
 
         for (let col = 0; col < 7; col++) {
             const cell = document.createElement("td");
-            const dayNumber = dayCounter - firstDayOfMonth;
+            const dayNumber = dayCounter - firstDayOfMonth + 1;
 
-            if (dayCounter > firstDayOfMonth && dayCounter <= daysInMonth + firstDayOfMonth) {
+            if (dayNumber > 0 && dayNumber <= daysInMonth) {
                 cell.textContent = dayNumber;
                 cell.classList.add("calendar__day-cell", "current-month-day");
 
@@ -87,7 +87,7 @@ function displayDays() {
                 // Ajouter le gestionnaire d'événement pour la date
                 cell.addEventListener("click", handleDateClick);
             } else {
-                cell.textContent = dayNumber <= 0 ? new Date(year, month, 0).getDate() + dayNumber : dayNumber - daysInMonth;
+                cell.textContent = dayNumber <= 0 ? new Date(year, month, 0).getDate() + dayNumber + 1 : dayNumber - daysInMonth;
                 cell.classList.add("calendar__day-cell", "disabled");
             }
 
