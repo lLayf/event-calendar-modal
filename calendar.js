@@ -198,7 +198,7 @@ function displayEventsForSelectedDate() {
 // Gère le clic sur une date du calendrier
 function handleDateClick(event) {
     const clickedCell = event.target;
-    if (!clickedCell.classList.contains("disabled")) {
+    if (!(clickedCell.classList.contains("disabled") || clickedCell.classList.contains("event-counter"))) {
         const year = currentDate.getFullYear();
         const month = currentDate.getMonth();
         const day = parseInt(clickedCell.textContent);
